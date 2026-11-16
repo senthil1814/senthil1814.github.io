@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Senthilraj Thirunavukarasu Saravana Babu | Business & Product Analyst</title>
+<meta name="description" content="Business and product analyst with an MSc in Business Analytics. Power BI dashboards, reporting automation and requirements gathering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F7F9; --panel:#FFFFFF; --ink:#16233A; --muted:#5B6678; --grid:#DDE2EA;
+  --blue:#2851D8; --teal:#0F8F7F; --amber:#E8A12E;
+  --serif:"Newsreader",Georgia,serif; --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1rem/1.6 var(--sans);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:48px 48px;background-position:-1px -1px}
+body::before{content:"";position:fixed;inset:0;background:linear-gradient(var(--paper) 0,rgba(246,247,249,.9) 100%);z-index:-1}
+a{color:var(--blue)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+header.top{position:sticky;top:0;background:rgba(246,247,249,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--grid);z-index:5}
+header.top .wrap{display:flex;gap:1.25rem;align-items:center;justify-content:space-between;padding-top:.7rem;padding-bottom:.7rem}
+.brand{font-weight:600;text-decoration:none;color:var(--ink)}
+nav{display:flex;gap:1rem;flex-wrap:wrap;font-size:.92rem}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--ink)}
+section{padding:3.5rem 0 1rem}
+h1,h2{font-family:var(--serif);font-weight:600;line-height:1.1;margin:0}
+h1{font-size:clamp(2.1rem,6vw,3.6rem);letter-spacing:-.01em;max-width:18ch}
+h2{font-size:1.8rem;margin-bottom:.4rem}
+.lead{font-size:1.15rem;max-width:44rem;margin:1rem 0 .5rem}
+.sub{color:var(--muted);margin:0 0 .25rem}
+.sec-note{color:var(--muted);max-width:40rem;margin:0 0 1.5rem}
+
+/* timeline chart */
+.chart{background:var(--panel);border:1px solid var(--grid);border-radius:6px;padding:1rem 1rem 1.25rem;margin-top:2rem}
+.chart h2{font-size:1.1rem;font-family:var(--sans);font-weight:600;margin:0 0 .15rem}
+.chart .hint{color:var(--muted);font-size:.88rem;margin:0 0 1rem}
+.axis{position:relative;height:1.4rem;margin-bottom:.25rem}
+.axis span{position:absolute;transform:translateX(-50%);font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.rows{position:relative}
+.gridlines{position:absolute;inset:0;pointer-events:none}
+.gridlines i{position:absolute;top:0;bottom:0;border-left:1px dashed var(--grid)}
+.row{display:block;width:100%;text-align:left;background:none;border:0;padding:.35rem 0;cursor:pointer;color:inherit;font:inherit;position:relative}
+.row .name{font-size:.88rem;font-weight:500;display:block;margin-bottom:.2rem}
+.row .name small{color:var(--muted);font-weight:400}
+.track{position:relative;height:1.35rem}
+.bar{position:absolute;top:0;height:100%;min-width:.55rem;border-radius:3px;background:var(--blue);transform-origin:left;animation:grow .9s cubic-bezier(.2,.7,.2,1) both}
+.bar.edu{background:var(--teal)}
+.bar.now{border-radius:3px 0 0 3px}
+.bar.now::after{content:"";position:absolute;right:-.7rem;top:0;height:100%;width:.7rem;background:repeating-linear-gradient(90deg,var(--blue) 0 3px,transparent 3px 6px)}
+.row:hover .bar,.row[aria-pressed="true"] .bar{box-shadow:0 0 0 3px rgba(232,161,46,.55)}
+.row[aria-pressed="true"] .name{color:var(--blue)}
+.row:nth-child(2) .bar{animation-delay:.08s}.row:nth-child(3) .bar{animation-delay:.16s}.row:nth-child(4) .bar{animation-delay:.24s}.row:nth-child(5) .bar{animation-delay:.32s}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.legend{display:flex;gap:1.25rem;font-size:.82rem;color:var(--muted);margin-top:.75rem}
+.legend b{display:inline-block;width:.8rem;height:.8rem;border-radius:2px;vertical-align:-1px;margin-right:.35rem;background:var(--blue)}
+.legend b.edu{background:var(--teal)}
+.detail{border-top:1px solid var(--grid);margin-top:1rem;padding-top:1rem}
+.detail h3{margin:0;font-family:var(--serif);font-size:1.35rem}
+.detail .meta{color:var(--muted);font-size:.9rem;margin:.1rem 0 .6rem}
+.detail ul{margin:0;padding-left:1.1rem;max-width:46rem}
+.detail li{margin:.3rem 0}
+
+/* numbers table */
+.tbl{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--grid);font-size:.95rem}
+.tbl caption{text-align:left;font-size:.85rem;color:var(--muted);padding-bottom:.4rem}
+.tbl th,.tbl td{padding:.7rem .9rem;text-align:left;border-bottom:1px solid var(--grid);vertical-align:top}
+.tbl thead th{font-size:.85rem;color:var(--muted);font-weight:500;background:#FBFCFD}
+.tbl td.v{font-family:var(--serif);font-size:1.25rem;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--blue)}
+.tbl tbody tr:last-child td{border-bottom:0}
+.scroll{overflow-x:auto}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1px;background:var(--grid);border:1px solid var(--grid)}
+.skills div{background:var(--panel);padding:1rem 1.1rem}
+.skills h3{margin:0 0 .35rem;font-size:.98rem}
+.skills p{margin:0;color:var(--muted);font-size:.93rem}
+
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:2rem}
+.two h3{font-size:1rem;margin:0 0 .6rem}
+.item{margin-bottom:1rem}
+.item b{display:block}
+.item span{color:var(--muted);font-size:.92rem}
+.contact a.btn{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;padding:.7rem 1.1rem;border-radius:4px;font-weight:500}
+.contact a.btn:hover{background:var(--blue)}
+footer{padding:3rem 0 2rem;color:var(--muted);font-size:.88rem}
+@media (max-width:560px){nav{display:none}.tbl td.v{white-space:normal}}
+@media (prefers-reduced-motion:reduce){.bar{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#top">Senthilraj</a>
+  <nav aria-label="Sections"><a href="#numbers">Results</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a></nav>
+</div></header>
+
+<main id="top" class="wrap">
+<section style="padding-top:3rem">
+  <p class="sub">Business &amp; Product Analyst · Data &amp; BI</p>
+  <h1>Senthilraj Thirunavukarasu Saravana Babu</h1>
+  <p class="lead">I turn unclear business questions into dashboards, reports and decisions people use. Two years across consulting, product and operations, with an MSc in Business Analytics from Royal Holloway, University of London.</p>
+  <p class="sub">Surrey, UK</p>
+
+  <div class="chart">
+    <h2>Career timeline, 2022 to now</h2>
+    <p class="hint">Select a bar to see what I did and what changed.</p>
+    <div class="axis" id="axis" aria-hidden="true"></div>
+    <div class="rows" id="rows"><div class="gridlines" id="gl" aria-hidden="true"></div></div>
+    <div class="legend"><span><b></b>Work</span><span><b class="edu"></b>Study</span></div>
+    <div class="detail" id="detail" aria-live="polite"></div>
+  </div>
+</section>
+
+<section id="numbers">
+  <h2>Results in numbers</h2>
+  <p class="sec-note">The measurable outcomes from my roles, with where each one happened.</p>
+  <div class="scroll"><table class="tbl">
+    <thead><tr><th scope="col">Result</th><th scope="col">What it was</th><th scope="col">Where</th></tr></thead>
+    <tbody>
+      <tr><td class="v">7-8 hrs</td><td>Manual data pulls removed each week by an automated reporting pipeline</td><td>Oakleaf Enterprises</td></tr>
+      <tr><td class="v">3</td><td>Power BI dashboards adopted by leadership to track service delivery</td><td>Oakleaf Enterprises</td></tr>
+      <tr><td class="v">£10-15k</td><td>Weekly banking and stock transactions reconciled, cutting manual errors</td><td>Topgolf Surrey</td></tr>
+      <tr><td class="v">~10</td><td>Shift-level KPIs tracked in Power BI, used for staffing decisions for up to 30 staff</td><td>Topgolf Surrey</td></tr>
+      <tr><td class="v">7</td><td>Product KPIs tracked in dashboards covering usage and engagement</td><td>Auriolus Infotech</td></tr>
+      <tr><td class="v">~600</td><td>Active users of the Getherly app whose UI/UX I designed in Figma</td><td>Auriolus Infotech</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <p class="sec-note">The tools and methods I use most.</p>
+  <div class="skills">
+    <div><h3>Business &amp; product analysis</h3><p>Requirements gathering, stakeholder engagement, process mapping, gap analysis, user stories, UAT support, Jira</p></div>
+    <div><h3>Data analysis &amp; reporting</h3><p>Data integration and cleansing, KPI analysis, trend identification, ad-hoc analysis, root-cause investigation</p></div>
+    <div><h3>BI &amp; visualisation</h3><p>Power BI (dashboard design, DAX), Tableau, Excel (advanced formulas, pivots, VBA)</p></div>
+    <div><h3>Programming &amp; machine learning</h3><p>SQL, Python, predictive modelling, gradient boosting (LightGBM)</p></div>
+    <div><h3>Data quality &amp; governance</h3><p>Accuracy and consistency checks, reconciliation, documentation, governance support</p></div>
+    <div><h3>Design &amp; cloud</h3><p>UI/UX and prototyping in Figma, AWS (cloud web application builder training)</p></div>
+  </div>
+</section>
+
+<section id="education">
+  <h2>Education and publication</h2>
+  <p class="sec-note">Where I studied and the paper I co-authored.</p>
+  <div class="two">
+    <div>
+      <h3>Education</h3>
+      <div class="item"><b>MSc Business Analytics</b><span>Royal Holloway, University of London · Sep 2024 to Sep 2025<br>Machine Learning &amp; Predictive Analysis, Business Analytics Languages &amp; Platforms, Cloud Computing</span></div>
+      <div class="item"><b>B.E. Computer Science and Engineering</b><span>Hindustan Institute of Technology and Science · Jul 2019 to Jun 2023<br>Data Analytics, Python, Web Design</span></div>
+      <div class="item"><b>AWS Academy: Cloud Web Application Builder</b><span>Hands-on project designing and deploying a database-backed web application on AWS</span></div>
+    </div>
+    <div>
+      <h3>Publication</h3>
+      <div class="item"><b>A Quick and Effective Loan Eligibility Analysis Model Using LightGBM</b><span>Co-authored, Springer (ICICSCNT 2023), 2024. I contributed to feature analysis and model development on real-world financial data to predict loan eligibility and default risk.<br><a href="https://doi.org/10.1007/978-3-031-75957-4_6">Read the paper (DOI)</a></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Contact</h2>
+  <p class="sec-note">I am open to business analyst, product analyst and data analyst roles.</p>
+  <a class="btn" href="mailto:senthilsdd@gmail.com">Email Senthilraj</a>
+  <!-- Add your links here once you have them:
+  <a href="https://www.linkedin.com/in/YOUR-NAME">LinkedIn</a> · <a href="https://github.com/YOUR-NAME">GitHub</a> -->
+</section>
+</main>
+
+<footer><div class="wrap">© 2026 Senthilraj Thirunavukarasu Saravana Babu</div></footer>
+
+<script>
+const START=2022, END=2027;
+const roles=[
+ {n:"AI data collection intern",o:"CSIR-CLRI, Chennai",w:"Jun 2022 · 15-day programme",s:2022.42,e:2022.47,t:"work",
+  p:["Collected footwear and foot measurement data on site for CSIR-CLRI's AI Mission in the footwear industry","Labelled, cleaned and structured the data so it was ready for machine learning model training","Documented the collection method and wrote up findings for the research team"]},
+ {n:"Product analyst",o:"Auriolus Infotech",w:"Jul 2023 to Aug 2024",s:2023.5,e:2024.67,t:"work",
+  p:["Designed the full UI/UX for the Getherly app in Figma, used by about 600 active users","Built and maintained Power BI dashboards covering 7 product KPIs for usage and engagement","Worked with 8 engineers and 3 business stakeholders to turn requirements into reporting solutions","Found and implemented reporting automation, and documented data definitions and logic for reuse"]},
+ {n:"MSc Business Analytics",o:"Royal Holloway, University of London",w:"Sep 2024 to Sep 2025",s:2024.67,e:2025.67,t:"edu",
+  p:["Modules in machine learning and predictive analysis, analytics languages and platforms, and cloud computing","Selected for a live consultancy project with a mental health NGO (see Oakleaf Enterprises)"]},
+ {n:"Business analyst",o:"Oakleaf Enterprises, mental health NGO",w:"Jun 2025 to Nov 2025 · university consultancy project",s:2025.42,e:2025.92,t:"work",
+  p:["Led requirements gathering with programme and leadership stakeholders and captured 5 new business requirements","Delivered 3 Power BI dashboards that leadership used to track service delivery","Automated the reporting pipeline and removed about 7-8 hours of manual data pulls per week","Integrated and validated data from several sources, and delivered 4 rounds of ad-hoc analysis for funding and operations questions"]},
+ {n:"Shift lead, analytics",o:"Topgolf Surrey",w:"Jan 2026 to present",s:2026.0,e:2026.88,t:"work",now:1,
+  p:["Lead venue shifts and act as the analytics lead for venue operations","Built and maintain 2 Power BI dashboards for sales, stock levels and about 10 shift KPIs","Reconcile £10-15k of weekly banking and stock data from POS and inventory systems","Use performance data to plan staffing for teams of up to 30 per shift"]}
+];
+const pct=t=>((t-START)/(END-START)*100);
+const axis=document.getElementById('axis'), rows=document.getElementById('rows'), gl=document.getElementById('gl'), detail=document.getElementById('detail');
+for(let y=START;y<END;y++){
+  const x=pct(y);
+  axis.insertAdjacentHTML('beforeend',`<span style="left:${x}%">${y}</span>`);
+  gl.insertAdjacentHTML('beforeend',`<i style="left:${x}%"></i>`);
+}
+roles.slice().reverse().forEach((r,i)=>{
+  const b=document.createElement('button');
+  b.className='row'; b.type='button'; b.setAttribute('aria-pressed','false');
+  b.innerHTML=`<span class="name">${r.n} <small>· ${r.o}</small></span><span class="track"><span class="bar ${r.t==='edu'?'edu':''} ${r.now?'now':''}" style="left:${pct(r.s)}%;width:${pct(r.e)-pct(r.s)}%"></span></span>`;
+  b.addEventListener('click',()=>show(r,b));
+  rows.appendChild(b); r.el=b;
+});
+function show(r,b){
+  rows.querySelectorAll('.row').forEach(x=>x.setAttribute('aria-pressed','false'));
+  b.setAttribute('aria-pressed','true');
+  detail.innerHTML=`<h3>${r.n}</h3><p class="meta">${r.o} · ${r.w}</p><ul>${r.p.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+}
+const last=roles[roles.length-1]; show(last,last.el);
+</script>
+</body>
+</html>
